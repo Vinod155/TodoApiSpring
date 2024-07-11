@@ -1,5 +1,8 @@
 package com.example.TodoApiSpring;
 
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.ArrayList;
@@ -18,5 +21,17 @@ public class TodoController {
         todos.add(new Todo(3,false,"Todo 1",3));
     }
 
+    @GetMapping("/todos")
+    public List<Todo> getTodos()
+    {
+        return todos;
+    }
+
+    @PostMapping("/todos")
+    public Todo createtodo(@RequestBody Todo newTodo)
+    {
+       todos.add(newTodo);
+       return newTodo;
+    }
 
 }
